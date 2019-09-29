@@ -1,5 +1,5 @@
 {
-  "name": "njo",
+  "name": "jjo",
   "version": "1.0.0",
   "description": "",
   "author": "Alexander Wolfe",
@@ -11,7 +11,7 @@
     "clean": "shx rm -rf dist"
   },
   "bin": {
-    "njo": "dist/njo.js"
+    "jjo": "dist/jjo.js"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",

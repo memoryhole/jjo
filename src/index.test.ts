@@ -1,6 +1,6 @@
 import { parse } from './index';
 
-describe('njo', () => {
+describe('jjo', () => {
     it('parses standard types', () => {
         expect(parse([
             'string=string',
