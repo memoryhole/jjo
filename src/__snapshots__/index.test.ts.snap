@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`njo handles files with invalid json 1`] = `
+Object {
+  "obj": Object {
+    "boolean": true,
+    "key": "value",
+    "number": 123.12,
+  },
+}
+`;
+
+exports[`njo parses files 1`] = `
+Object {
+  "obj": Object {
+    "boolean": true,
+    "key": "value",
+    "number": 123.12,
+  },
+}
+`;
+
+exports[`njo parses json types 1`] = `
+Object {
+  "arr": Array [
+    Object {
+      "num": 123,
+      "something": "else",
+    },
+    true,
+    "string",
+  ],
+  "obj": Object {
+    "flag": false,
+    "key": "value",
+  },
+}
+`;
+
+exports[`njo parses standard types 1`] = `
+Object {
+  "badfloat": "1.123.4",
+  "boolean": true,
+  "empty": "",
+  "float": 1.234,
+  "number": 1234,
+  "string": "string",
+}
+`;
