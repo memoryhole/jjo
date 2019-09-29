@@ -1,7 +1,7 @@
 # njo
-Njo is a small utility to create JSON objects that was inspired by jpmens/jo. There is already a C, Go, and Rust version of Jo.
+Njo is a small utility to create JSON objects that was inspired by [jpmens/jo](https://github.com/jpmens/jo) and [skanehira/gjo](https://github.com/skanehira/gjo).
 
-I figured why not add a node.js version as well.
+The original Jo was written in C. This is the Node.js port.
 
 ## How to install
 
@@ -81,3 +81,8 @@ njo somekey=false array=$(njo -a *)
     ]
 }
 ```
+
+## See also
+* [jo](https://github.com/jpmens/jo)
+* [gjo](https://github.com/skanehira/gjo)
+* [rjo](https://github.com/dskkato/rjo)
