@@ -27,27 +27,32 @@ function readFile(input: string) : Value {
     }
 }
 
-export function parseToJSON(input: string[]) {
+export function parse(input: string) {
+        if (input === "") {
+            return "";
+        } else if (input === "null") {
+            return  null;
+        } else if (["true", "false"].includes(input)) {
+            return Boolean(input);
+        } else if (isFileReference(input)) {
+            return readFile(input);
+        } else if (isJSON(input)) {
+            return JSON.parse(input);
+        } else if (!isNaN(Number(input))) {
+            return Number(input);
+        } else {
+            return input;
+        }
+
+}
+
+export function parseKeyValuePairs(input: string[]) {
     const pairs = input.map(pair => pair.split("="));
 
     const obj: {[key: string]: Value} = {};
 
     pairs.forEach(([key, value]) => {
-        if (value === "") {
-            obj[key] = "";
-        } else if (value === "null") {
-            obj[key] = null;
-        } else if (["true", "false"].includes(value)) {
-            obj[key] = Boolean(value);
-        } else if (isFileReference(value)) {
-            obj[key] = readFile(value);
-        } else if (isJSON(value)) {
-            obj[key] = JSON.parse(value);
-        } else if (!isNaN(Number(value))) {
-            obj[key] = Number(value);
-        } else {
-            obj[key] = value;
-        }
+        obj[key] = parse(value);
     })
 
     return obj;
