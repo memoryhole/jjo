@@ -27,7 +27,7 @@ function readFile(input: string) : Value {
     }
 }
 
-export function parse(input: string[]) {
+export function parseToJSON(input: string[]) {
     const pairs = input.map(pair => pair.split("="));
 
     const obj: {[key: string]: Value} = {};
