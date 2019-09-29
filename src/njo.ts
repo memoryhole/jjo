@@ -11,7 +11,7 @@ commander.action((args, cmd) => {
     if (cmd.array) {
 
         if (args.length) {
-            console.log(args.map((item: string) => parse(item)));
+            console.log(JSON.stringify(args.map((item: string) => parse(item))));
 
         } else {
             var readline = require('readline');
@@ -24,10 +24,10 @@ commander.action((args, cmd) => {
             const lines : Array<string>= [];
             
             rl.on('line', (data: string) => lines.push(data));
-            rl.on('close', () => console.log(lines.map((item: string) => parse(item))))
+            rl.on('close', () => console.log(JSON.stringify(lines.map((item: string) => parse(item)))))
         }
     } else {
-        console.log(parseKeyValuePairs(args))
+        console.log(JSON.stringify(parseKeyValuePairs(args)))
     }
 });
 
