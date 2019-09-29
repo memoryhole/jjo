@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "author": "Alexander Wolfe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/memoryhole/jjo.git"
+  },
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
