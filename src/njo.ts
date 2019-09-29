@@ -1,7 +1,16 @@
+#!/usr/bin/env node
 import commander from 'commander';
 import { parse, parseKeyValuePairs } from './index';
 
 const pkg = require("../package.json");
+
+function printJSON(obj: any) {
+    if (process.stdout.isTTY) {
+        console.log(JSON.stringify(obj, null, 4));
+    } else {
+        console.log(JSON.stringify(obj));
+    }
+}
 
 commander.version(pkg.version);
 commander.description("Inspired by jpmens/jo")
@@ -11,7 +20,7 @@ commander.action((args, cmd) => {
     if (cmd.array) {
 
         if (args.length) {
-            console.log(JSON.stringify(args.map((item: string) => parse(item))));
+            printJSON(args.map((item: string) => parse(item)));
 
         } else {
             var readline = require('readline');
@@ -24,10 +33,10 @@ commander.action((args, cmd) => {
             const lines : Array<string>= [];
             
             rl.on('line', (data: string) => lines.push(data));
-            rl.on('close', () => console.log(JSON.stringify(lines.map((item: string) => parse(item)))))
+            rl.on('close', () => printJSON(lines.map((item: string) => parse(item))));
         }
     } else {
-        console.log(JSON.stringify(parseKeyValuePairs(args)))
+        printJSON(parseKeyValuePairs(args));
     }
 });
 
