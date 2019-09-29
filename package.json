@@ -2,20 +2,25 @@
   "name": "njo",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "clean": "shx rm -rf dist"
   },
   "author": "Alexander Wolfe",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "jest": "^24.9.0",
+    "shx": "^0.3.2",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.3"
   },
   "dependencies": {
     "@types/node": "^12.7.8"
-  }
+  },
+  "files": [
+    "/dist"
+  ]
 }

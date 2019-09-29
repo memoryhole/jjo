@@ -32,6 +32,12 @@ describe('njo', () => {
         ])).toMatchSnapshot()
     });
 
+    it('parses files literally', () => {
+        expect(parse([
+            `obj=@${__dirname}/__fixtures__/data.json`
+        ])).toMatchSnapshot()
+    });
+
     xit('handles files with invalid json', () => {
         expect(parse([
             `obj=:${__dirname}/__fixtures__/bad_data.json`

@@ -20,6 +20,16 @@ Object {
 }
 `;
 
+exports[`njo parses files literally 1`] = `
+Object {
+  "obj": "{
+    \\"boolean\\": true,
+    \\"key\\": \\"value\\",
+    \\"number\\": 123.12
+}",
+}
+`;
+
 exports[`njo parses json types 1`] = `
 Object {
   "arr": Array [
