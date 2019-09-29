@@ -13,7 +13,7 @@ function printJSON(obj: any) {
 }
 
 commander.version(pkg.version);
-commander.description("Inspired by jpmens/jo")
+commander.description("a small utility to create JSON objects")
 commander.arguments("[items...]");
 commander.option("-a, --array", "create a json array")
 commander.action((args, cmd) => {

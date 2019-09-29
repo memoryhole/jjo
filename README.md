@@ -1,5 +1,5 @@
 # jjo
-jjo is a small utility to create JSON objects that was inspired by jpmens/jo. There is already a C, Go, and Rust version of Jo.
+jjo is a small utility to create JSON objects that was inspired by [jpmens/jo](https://github.com/jpmens/jo) and [skanehira/gjo](https://github.com/skanehira/gjo).
 
 I figured why not add a Javascript version for node.js as well.
 
@@ -14,13 +14,13 @@ npm install -g jjo
 ```
 Usage: jjo [options] [items...]
 
-Inspired by jpmens/jo
+a small utility to create JSON objects
 
 Options:
   -V, --version  output the version number
   -a, --array    create a json array
   -h, --help     output usage information
-  ```
+```
 
 ## Examples
 
@@ -86,3 +86,4 @@ jjo somekey=false array=$(jjo -a *)
 * [jo](https://github.com/jpmens/jo)
 * [gjo](https://github.com/skanehira/gjo)
 * [rjo](https://github.com/dskkato/rjo)
+* [njo](https://github.com/hiroppy/njo)
