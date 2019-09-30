@@ -33,7 +33,7 @@ export function parse(input: string) {
         } else if (input === "null") {
             return  null;
         } else if (["true", "false"].includes(input)) {
-            return Boolean(input);
+            return input ==="true";
         } else if (isFileReference(input)) {
             return readFile(input);
         } else if (isJSON(input)) {
