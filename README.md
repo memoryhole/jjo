@@ -48,16 +48,16 @@ jjo number=123 float=123.12 string="this is a string" otherstring=foobar object=
 
 ### Create Array
 ```bash
-jjo -a 123 "foor bar" {\"a\":123} false
+jjo -a 123 "foo bar" {\"a\":123} false
 ```
 ```json
 [
     123,
-    "foor bar",
+    "foo bar",
     {
         "a": 123
     },
-    true
+    false
 ]
 ```
 
@@ -67,7 +67,7 @@ jjo somekey=false array=$(jjo -a *)
 ```
 ```json
 {
-    "somekey": true,
+    "somekey": false,
     "array": [
         "dist",
         "jest.config.js",
