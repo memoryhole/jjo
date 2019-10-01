@@ -12,6 +12,7 @@
   "scripts": {
     "test": "jest",
     "build": "tsc",
+    "prepublish": "npm run clean && npm run build",
     "clean": "shx rm -rf dist"
   },
   "bin": {
