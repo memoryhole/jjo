@@ -18,10 +18,19 @@ function readFile(input: string) : Value {
         throw new Error(`input string of '${input}' must begin with one of : or @ to read a file`);
     }
 
+    if (!fs.existsSync(filePath)) {
+        throw new Error(`${filePath} does not exist`);
+    }
+
     const contents = fs.readFileSync(filePath).toString();
 
     if (parseJSON) {
-        return JSON.parse(contents);
+        try {
+            return JSON.parse(contents);
+        } catch (e) {
+            throw new Error(`Invalid JSON in file ${filePath}: ${contents}`);
+
+        }
     } else {
         return contents;
     }
@@ -37,7 +46,11 @@ export function parse(input: string) {
         } else if (isFileReference(input)) {
             return readFile(input);
         } else if (isJSON(input)) {
-            return JSON.parse(input);
+            try {
+                return JSON.parse(input);
+            } catch (e) {
+                throw new Error(`Invalid JSON: ${input}`);
+            }
         } else if (!isNaN(Number(input))) {
             return Number(input);
         } else {
