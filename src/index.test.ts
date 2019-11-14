@@ -1,4 +1,6 @@
 import { parse, parseKeyValuePairs } from './index';
+import * as fs from 'fs';
+import * as path from 'path';
 
 describe('jjo', () => {
     it('parses standard types', () => {
@@ -10,38 +12,59 @@ describe('jjo', () => {
             'float=1.234',
             'empty=',
             'badfloat=1.123.4'
-        ])).toMatchSnapshot()
+        ])).toEqual({
+            string: 'string',
+            number: 1234,
+            boolean: true,
+            boolean2: false,
+            float: 1.234,
+            empty:'',
+            badfloat:'1.123.4'
+        });
     });
 
     it('parses json types', () => {
         expect(parseKeyValuePairs([
             'obj={"key": "value", "flag": false}',
             'arr=[{"something": "else", "num": 123}, true, "string"]'
-        ])).toMatchSnapshot()
+        ])).toEqual({
+            obj: {"key": "value", "flag": false},
+            arr: [{"something": "else", "num": 123}, true, "string"]
+        });
     });
 
-   xit('handles invalid json', () => {
-        expect(parseKeyValuePairs([
+   it('handles invalid json', () => {
+        expect(() => parseKeyValuePairs([
             'obj={"key": "value", "flag: false}',
             'arr=[{"something": "else" "num": 123}, true, "string"]'
-        ])).toMatchSnapshot()
+        ])).toThrow(/Invalid JSON: /);
     });
 
     it('parses files', () => {
         expect(parseKeyValuePairs([
             `obj=:${__dirname}/__fixtures__/data.json`
-        ])).toMatchSnapshot()
+        ])).toEqual({
+            obj: {
+                "boolean": true,
+                "key": "value",
+                "number": 123.12
+            }
+        });
     });
 
     it('parses files literally', () => {
+        const filePath = path.join(__dirname, "/__fixtures__/data.json");
         expect(parseKeyValuePairs([
-            `obj=@${__dirname}/__fixtures__/data.json`
-        ])).toMatchSnapshot()
+            `obj=@${filePath}`
+        ])).toEqual({
+            obj: fs.readFileSync(filePath).toString()
+        });
     });
 
-    xit('handles files with invalid json', () => {
-        expect(parseKeyValuePairs([
-            `obj=:${__dirname}/__fixtures__/bad_data.json`
-        ])).toMatchSnapshot()
+    it('handles files with invalid json', () => {
+        const filePath = path.join(__dirname, "/__fixtures__/bad_data.json");
+        expect(() => parseKeyValuePairs([
+            `obj=:${filePath}`
+        ])).toThrow(/Invalid JSON in file/);
     });
 });
