@@ -19,9 +19,19 @@
   "bin": {
     "jjo": "dist/lib/jjo.js"
   },
+  "lint-staged": {
+    "*.ts": "tslint -c tslint.json --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run prepublish"
+    }
+  },
   "devDependencies": {
     "@types/jest": "^24.0.18",
+    "husky": "^3.0.9",
     "jest": "^24.9.0",
+    "lint-staged": "^9.4.3",
     "shx": "^0.3.2",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.1",
