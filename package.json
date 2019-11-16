@@ -8,21 +8,23 @@
     "url": "https://github.com/memoryhole/jjo.git"
   },
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "dist/lib/index.js",
   "scripts": {
     "test": "jest",
+    "lint": "tslint -c tslint.json lib/**/*.ts",
     "build": "tsc",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "npm run clean && npm run lint && npm run build",
     "clean": "shx rm -rf dist"
   },
   "bin": {
-    "jjo": "dist/jjo.js"
+    "jjo": "dist/lib/jjo.js"
   },
   "devDependencies": {
     "@types/jest": "^24.0.18",
     "jest": "^24.9.0",
     "shx": "^0.3.2",
     "ts-jest": "^24.1.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.6.3"
   },
   "dependencies": {

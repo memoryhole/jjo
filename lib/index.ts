@@ -1,16 +1,18 @@
-import * as fs from 'fs';
+import * as fs from "fs";
 
-type Value = string | boolean | number | null | Array<any> | Object;
+type Value = string | boolean | number | null | any[] | object;
 
-function isJSON(input : string) {
-     return (input.startsWith("{") && input.endsWith("}")) || (input.startsWith("[") && input.endsWith("]")) || (input.startsWith('"') && input.endsWith('"'));
+function isJSON(input: string) {
+     return (input.startsWith("{") && input.endsWith("}"))
+         || (input.startsWith("[") && input.endsWith("]"))
+         || (input.startsWith('"') && input.endsWith('"'));
 }
 
 function isFileReference(input: string) {
     return input.startsWith(":") || input.startsWith("@");
 }
 
-function readFile(input: string) : Value {
+function readFile(input: string): Value {
     const parseJSON = input.startsWith(":") ? true : input.startsWith("@") ? false : undefined;
     const filePath = input.slice(1);
 
@@ -42,7 +44,7 @@ export function parse(input: string) {
         } else if (input === "null") {
             return  null;
         } else if (["true", "false"].includes(input)) {
-            return input ==="true";
+            return input === "true";
         } else if (isFileReference(input)) {
             return readFile(input);
         } else if (isJSON(input)) {
@@ -60,13 +62,13 @@ export function parse(input: string) {
 }
 
 export function parseKeyValuePairs(input: string[]) {
-    const pairs = input.map(pair => pair.split("="));
+    const pairs = input.map((pair) => pair.split("="));
 
     const obj: {[key: string]: Value} = {};
 
     pairs.forEach(([key, value]) => {
         obj[key] = parse(value);
-    })
+    });
 
     return obj;
 }
