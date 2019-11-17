@@ -8,7 +8,7 @@
     "url": "https://github.com/memoryhole/jjo.git"
   },
   "license": "MIT",
-  "main": "dist/lib/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "lint": "tslint -c tslint.json lib/**/*.ts",
@@ -17,7 +17,7 @@
     "clean": "shx rm -rf dist"
   },
   "bin": {
-    "jjo": "dist/lib/jjo.js"
+    "jjo": "dist/jjo.js"
   },
   "lint-staged": {
     "*.ts": "tslint -c tslint.json --fix"

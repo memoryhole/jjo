@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 import commander from "commander";
+import * as fs from "fs";
+import * as path from "path";
 import { parse, parseKeyValuePairs } from "./index";
-
-import * as pkg from "../package.json";
 
 function printJSON(obj: any) {
     if (process.stdout.isTTY) {
@@ -14,6 +14,7 @@ function printJSON(obj: any) {
     }
 }
 
+const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, "../package.json")).toString());
 commander.version(pkg.version);
 commander.description("a small utility to create JSON objects");
 commander.arguments("[items...]");
