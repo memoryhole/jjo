@@ -63,6 +63,9 @@ export function parse(input: string) {
 
 export function parseKeyValuePairs(input: string[]) {
     const pairs = input.map((pair) => {
+        if (!pair.includes("=")) {
+            throw new Error(`Invalid Key-Value Pair : ${pair} : Should be of form KEY=VALUE`);
+        }
         const [key, ...rest] = pair.split("=");
         return [key, rest.join("=")];
     });
