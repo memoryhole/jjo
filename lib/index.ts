@@ -62,7 +62,10 @@ export function parse(input: string) {
 }
 
 export function parseKeyValuePairs(input: string[]) {
-    const pairs = input.map((pair) => pair.split("="));
+    const pairs = input.map((pair) => {
+        const [key, ...rest] = pair.split("=");
+        return [key, rest.join("=")];
+    });
 
     const obj: {[key: string]: Value} = {};
 
