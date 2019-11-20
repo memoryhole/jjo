@@ -35,6 +35,12 @@ describe("jjo", () => {
         });
     });
 
+    it("handles invalid pairs", () => {
+        expect(() => parseKeyValuePairs([
+            'obj{"key": "value", "flag: false}',
+        ])).toThrow(/Invalid Key-Value Pair :.*: Should be of form KEY=VALUE/);
+    });
+
     it("handles invalid json", () => {
         expect(() => parseKeyValuePairs([
             'obj={"key": "value", "flag: false}',
