@@ -12,6 +12,7 @@ describe("jjo", () => {
             "float=1.234",
             "empty=",
             "badfloat=1.123.4",
+            "url=\"http://www.somewhere.net?key=value\"",
         ])).toEqual({
             badfloat: "1.123.4",
             boolean: true,
@@ -20,6 +21,7 @@ describe("jjo", () => {
             float: 1.234,
             number: 1234,
             string: "string",
+            url: "http://www.somewhere.net?key=value",
         });
     });
 
