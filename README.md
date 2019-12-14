@@ -1,9 +1,10 @@
 # jjo
-[![Build Status](https://travis-ci.org/memoryhole/jjo.svg?branch=master)](https://travis-ci.org/memoryhole/jjo)
 
 jjo is a small utility to create JSON objects that was inspired by [jpmens/jo](https://github.com/jpmens/jo) and [skanehira/gjo](https://github.com/skanehira/gjo).
 
 I figured why not add a Javascript version for node.js as well.
+
+[![Build Status](https://travis-ci.org/memoryhole/jjo.svg?branch=master)](https://travis-ci.org/memoryhole/jjo)
 
 ## How to install
 
