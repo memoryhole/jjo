@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-type Value = string | boolean | number | null | any[] | object;
+type Value = string | boolean | number | null | unknown[] | object;
 
 function isJSON(input: string) {
      return (input.startsWith("{") && input.endsWith("}"))

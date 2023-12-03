@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { parse, parseKeyValuePairs } from "./index";
+import { parseKeyValuePairs } from "./index";
 
 describe("jjo", () => {
     it("parses standard types", () => {
